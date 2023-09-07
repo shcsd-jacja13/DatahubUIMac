@@ -46,7 +46,7 @@ export const SidebarAboutSection = ({ properties, readOnly }: Props) => {
                     )
                 }
             />
-            {description && <DescriptionSection description={description} />}
+            {originalDescription || description && <DescriptionSection description={originalDescription || description} />}
             {!hasContent && <EmptyContentSection hideLinksButton={hideLinksButton} readOnly={readOnly} />}
             {hasContent && <LinksSection hideLinksButton={hideLinksButton} readOnly={readOnly} />}
             <SourceRefSection />
