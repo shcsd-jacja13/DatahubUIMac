@@ -9,6 +9,7 @@ import EntityContext from '../EntityContext';
 import { GenericEntityProperties } from '../types';
 import EmbeddedHeader from './EmbeddedHeader';
 import { SidebarAboutSection } from '../containers/profile/sidebar/AboutSection/SidebarAboutSection';
+import { SidebarAccessRequestSection } from '../containers/profile/sidebar/AccessRequest/SidebarAccessRequestSection';
 import { SidebarOwnerSection } from '../containers/profile/sidebar/Ownership/sidebar/SidebarOwnerSection';
 import { SidebarTagsSection } from '../containers/profile/sidebar/SidebarTagsSection';
 import { SidebarDomainSection } from '../containers/profile/sidebar/Domain/SidebarDomainSection';
@@ -89,6 +90,8 @@ export default function EmbeddedProfile<T>({ urn, entityType, getOverridePropert
                     <SidebarTagsSection readOnly={readOnly} properties={{ hasTags: true, hasTerms: true }} />
                     <StyledDivider />
                     <SidebarDomainSection readOnly={readOnly} />
+                    <StyledDivider />
+                    <SidebarAccessRequestSection readOnly={readOnly} />
                     <StyledDivider />
                     <DataProductSection readOnly={readOnly} />
                 </>

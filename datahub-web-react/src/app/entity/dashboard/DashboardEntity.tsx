@@ -11,6 +11,7 @@ import { Entity, EntityCapabilityType, IconStyleType, PreviewType } from '../Ent
 import { EntityProfile } from '../shared/containers/profile/EntityProfile';
 import { SidebarOwnerSection } from '../shared/containers/profile/sidebar/Ownership/sidebar/SidebarOwnerSection';
 import { SidebarAboutSection } from '../shared/containers/profile/sidebar/AboutSection/SidebarAboutSection';
+import { SidebarAccessRequestSection } from '../shared/containers/profile/sidebar/AccessRequest/SidebarAccessRequestSection';
 import { SidebarTagsSection } from '../shared/containers/profile/sidebar/SidebarTagsSection';
 import { DocumentationTab } from '../shared/tabs/Documentation/DocumentationTab';
 import { DashboardChartsTab } from '../shared/tabs/Entity/DashboardChartsTab';
@@ -101,6 +102,9 @@ export class DashboardEntity implements Entity<Dashboard> {
             component: SidebarDomainSection,
         },
         {
+            component: SidebarAccessRequestSection,
+        },
+        {
             component: DataProductSection,
         },
     ];
@@ -118,6 +122,10 @@ export class DashboardEntity implements Entity<Dashboard> {
             }}
             tabs={[
                 {
+                    name: 'Overview',
+                    component: DocumentationTab,
+                },
+                {
                     name: 'Charts',
                     component: DashboardChartsTab,
                     display: {
@@ -134,10 +142,6 @@ export class DashboardEntity implements Entity<Dashboard> {
                         visible: (_, dashboard: GetDashboardQuery) => (dashboard?.dashboard?.datasets?.total || 0) > 0,
                         enabled: (_, dashboard: GetDashboardQuery) => (dashboard?.dashboard?.datasets?.total || 0) > 0,
                     },
-                },
-                {
-                    name: 'Documentation',
-                    component: DocumentationTab,
                 },
                 {
                     name: 'Preview',
