@@ -13,6 +13,8 @@ RUN if [ "${ALPINE_REPO_URL}" != "http://dl-cdn.alpinelinux.org/alpine" ] ; then
 
 RUN apk --no-cache --update add openssl git tar curl
 
+RUN apk add --no-cache ca-certificates
+
 WORKDIR /go/src/github.com/jwilder/dockerize
 
 RUN go install github.com/jwilder/dockerize@$DOCKERIZE_VERSION
