@@ -15,6 +15,7 @@ import { PropertiesTab } from '../shared/tabs/Properties/PropertiesTab';
 import { ChartDashboardsTab } from '../shared/tabs/Entity/ChartDashboardsTab';
 import { getDataForEntityType } from '../shared/containers/profile/utils';
 import { SidebarDomainSection } from '../shared/containers/profile/sidebar/Domain/SidebarDomainSection';
+import { SidebarAccessRequestSection } from '../shared/containers/profile/sidebar/AccessRequest/SidebarAccessRequestSection';
 import { EntityMenuItems } from '../shared/EntityDropdown/EntityDropdown';
 import { LineageTab } from '../shared/tabs/Lineage/LineageTab';
 import { ChartStatsSummarySubHeader } from './profile/stats/ChartStatsSummarySubHeader';
@@ -95,6 +96,9 @@ export class ChartEntity implements Entity<Chart> {
             component: SidebarDomainSection,
         },
         {
+            component: SidebarAccessRequestSection,
+        },
+        {
             component: DataProductSection,
         },
     ];
@@ -112,23 +116,19 @@ export class ChartEntity implements Entity<Chart> {
             }}
             tabs={[
                 {
-                    name: 'Query',
-                    component: ChartQueryTab,
-                    display: {
-                        visible: (_, chart: GetChartQuery) => (chart?.chart?.query?.rawQuery && true) || false,
-                        enabled: (_, chart: GetChartQuery) => (chart?.chart?.query?.rawQuery && true) || false,
-                    },
-                },
-                {
-                    name: 'Documentation',
-                    component: DocumentationTab,
-                },
-                {
                     name: 'Fields',
                     component: InputFieldsTab,
                     display: {
                         visible: (_, chart: GetChartQuery) => (chart?.chart?.inputFields?.fields?.length || 0) > 0,
                         enabled: (_, chart: GetChartQuery) => (chart?.chart?.inputFields?.fields?.length || 0) > 0,
+                    },
+                },
+                {
+                    name: 'Query',
+                    component: ChartQueryTab,
+                    display: {
+                        visible: (_, chart: GetChartQuery) => (chart?.chart?.query?.rawQuery && true) || false,
+                        enabled: (_, chart: GetChartQuery) => (chart?.chart?.query?.rawQuery && true) || false,
                     },
                 },
                 {
