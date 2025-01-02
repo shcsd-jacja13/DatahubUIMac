@@ -182,6 +182,7 @@ export default function LineageEntityNode({
                 (!isExpanding ? (
                     <Group
                         onClick={() => {
+                                // getAsyncEntity(node.data.urn, node.data.type);
                             setIsExpanding(true);
                             if (node.data.urn && node.data.type) {
                                 // getAsyncEntity(node.data.urn, node.data.type);
@@ -192,6 +193,13 @@ export default function LineageEntityNode({
                                         showColumns,
                                         startTimeMillis,
                                         endTimeMillis,
+                                    },
+                                    onCompleted: () => {
+                                        setIsExpanding(false);
+                                    },
+                                    onError: () => {
+                                        // Also set to false if the request fails
+                                        setIsExpanding(false);
                                     },
                                 });
                             }
